@@ -30,7 +30,7 @@ A mid-level frontend implementation of a Payment Gateway UI built with Next.js (
 
 1.  **Clone the repository**:
     ```bash
-    git clone https://github.com/bhaveshbishnoi/payment-system-assesment
+    git clone https://github.com/bhaveshbishnoi/payment-system-assesment.git
     cd assesment
     ```
 
