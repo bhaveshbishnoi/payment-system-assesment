@@ -111,27 +111,27 @@ const TransactionHistory: React.FC<TransactionHistoryProps> = ({ transactions })
             />
             <motion.div
               layoutId={selectedTransaction.id}
-              className="relative w-full max-w-md rounded-3xl bg-white p-8 shadow-2xl"
+              className="relative w-full max-w-md rounded-[2rem] bg-white p-6 shadow-2xl md:p-8"
             >
               <div className="mb-6 flex flex-col items-center text-center">
                 <div className={cn(
-                  "mb-4 flex h-16 w-16 items-center justify-center rounded-full",
+                  "mb-4 flex h-14 w-14 items-center justify-center rounded-full md:h-16 md:w-16",
                   selectedTransaction.status === 'success' ? "bg-green-100" : selectedTransaction.status === 'failed' ? "bg-red-100" : "bg-orange-100"
                 )}>
                   {getStatusIcon(selectedTransaction.status)}
                 </div>
-                <h4 className="text-2xl font-bold text-slate-900">
+                <h4 className="text-xl font-bold text-slate-900 md:text-2xl">
                   {selectedTransaction.currency} {selectedTransaction.amount.toFixed(2)}
                 </h4>
                 <p className={cn(
-                  "text-sm font-bold uppercase tracking-widest",
+                  "text-[10px] font-bold uppercase tracking-widest md:text-sm",
                   selectedTransaction.status === 'success' ? "text-green-600" : selectedTransaction.status === 'failed' ? "text-red-600" : "text-orange-600"
                 )}>
                   Payment {selectedTransaction.status}
                 </p>
               </div>
 
-              <div className="space-y-4 rounded-2xl bg-slate-50 p-6">
+              <div className="space-y-4 rounded-2xl bg-slate-50 p-4 md:p-6">
                 <div className="flex justify-between">
                   <span className="text-xs font-medium text-slate-500">Transaction ID</span>
                   <span className="text-xs font-bold text-slate-900">{selectedTransaction.id}</span>

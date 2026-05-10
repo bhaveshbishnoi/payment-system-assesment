@@ -127,8 +127,8 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ onFormUpdate, onSubmit, disab
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+    <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
         {/* Amount & Currency */}
         <div className="md:col-span-2">
           <label className="mb-2 block text-sm font-medium text-slate-700">Payment Amount</label>

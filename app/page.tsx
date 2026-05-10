@@ -49,15 +49,15 @@ export default function Home() {
   }, [lastSubmittedPayload, processPayment]);
 
   return (
-    <main className="min-h-screen bg-[#F8FAFC] px-4 py-12 md:px-8">
+    <main className="min-h-screen bg-[#F8FAFC] px-4 py-8 md:px-8 md:py-12">
       <div className="mx-auto max-w-6xl">
         {/* Header */}
         <div className="mb-12 flex flex-col items-center justify-between gap-4 md:flex-row">
-          <div>
-            <h1 className="text-3xl font-black tracking-tight text-slate-900 md:text-4xl">
+          <div className="text-center md:text-left">
+            <h1 className="text-2xl font-black tracking-tight text-slate-900 md:text-4xl">
               Secure Checkout
             </h1>
-            <p className="mt-2 text-slate-500">
+            <p className="mt-2 text-sm text-slate-500 md:text-base">
               Complete your transaction securely with our encrypted gateway.
             </p>
           </div>
@@ -70,7 +70,7 @@ export default function Home() {
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
           {/* Main Payment Section */}
           <div className="lg:col-span-7">
-            <div className="rounded-[2.5rem] bg-white p-8 shadow-xl shadow-slate-200/50 md:p-12">
+            <div className="rounded-[2rem] bg-white p-6 shadow-xl shadow-slate-200/50 md:rounded-[2.5rem] md:p-12">
               <AnimatePresence mode="wait">
                 {status === 'idle' ? (
                   <motion.div
@@ -120,7 +120,7 @@ export default function Home() {
           <div className="lg:col-span-5">
             <div className="sticky top-12 space-y-8">
               {/* Transaction History Card */}
-              <div className="rounded-[2.5rem] bg-slate-100/50 p-8 md:p-10">
+              <div className="rounded-[2rem] bg-slate-100/50 p-6 md:rounded-[2.5rem] md:p-10">
                 <div className="mb-6 flex items-center gap-3">
                   <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-900 text-white shadow-lg shadow-slate-900/20">
                     <History className="h-5 w-5" />
