@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GravityPay - Secure Payment Gateway Simulation
 
-## Getting Started
+A mid-level frontend implementation of a Payment Gateway UI built with Next.js (App Router), TypeScript, and Zustand.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Live Card Preview**: Real-time visual representation of card details as you type.
+- **Card Detection**: Automatically detects Visa, Mastercard, and Amex based on card number prefixes.
+- **Real-time Validation**: Validates all fields (Card Number, Expiry, CVV, Amount) on blur or as you type.
+- **Payment Lifecycle**: Full state management for Idle, Processing, Success, Failed, and Timeout states.
+- **Gateway Simulation**: A mock API route handles payments with randomized outcomes:
+  - Success (60%)
+  - Failed (25%) with specific reason strings.
+  - Timeout (15%) - Simulates a slow network, handled via `AbortController` on the frontend (6s cutoff).
+- **Retry Logic**: Supports up to 3 retry attempts for failed or timed-out transactions.
+- **Idempotency**: Generates a unique transaction ID on the frontend using `crypto.randomUUID()` to ensure consistent history across retries.
+- **Transaction History**: Persists past transactions in `localStorage` with detailed view capabilities.
+- **Premium UI**: Modern, glassmorphic design using Tailwind CSS 4, Framer Motion for animations, and Inter typography.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Framework**: Next.js 15 (App Router)
+- **Language**: TypeScript
+- **State Management**: Zustand
+- **Styling**: Tailwind CSS 4
+- **Animations**: Framer Motion
+- **Icons**: Lucide React
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Setup Instructions
 
-## Learn More
+1.  **Clone the repository**:
+    ```bash
+    git clone <repository-url>
+    cd assesment
+    ```
 
-To learn more about Next.js, take a look at the following resources:
+2.  **Install dependencies**:
+    ```bash
+    npm install
+    ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3.  **Run the development server**:
+    ```bash
+    npm run dev
+    ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4.  **Open in browser**: Navigate to `http://localhost:3000`.
 
-## Deploy on Vercel
+## Assumptions & Decisions
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **State Management**: Zustand was chosen over Redux Toolkit for its minimal boilerplate and excellent performance with React 19.
+- **Validation**: Manual validation logic was implemented in `utils/` to demonstrate fundamental knowledge without relying on libraries like Zod or Yup (though they would be preferred in production).
+- **Persistence**: `zustand/middleware`'s `persist` was used to handle `localStorage` synchronization seamlessly.
+- **Accessibility**: ARIA labels and `aria-describedby` were added to form inputs for screen reader support.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Future Improvements
+
+- **Security**: Implement server-side validation and checksums for payment payloads.
+- **UX**: Add a "Save Card" feature (simulated) and more comprehensive tooltips for field requirements.
+- **Testing**: Add Playwright/Cypress for E2E testing of the payment flow and Vitest for utility unit tests.
+- **Accessibility**: Further refine keyboard navigation and focus management for the modal and status transitions.
+# payment-system-assesment
